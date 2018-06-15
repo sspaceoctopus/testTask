@@ -1,0 +1,73 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.custom-navbar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.custom-btn {
+    background-color: #5CA4A9;
+    border-radius: 20px;
+    color: white;
+}
+
+.search label,.search input{
+    margin-right: 10px;
+}
+
+.search input {
+    border-radius: 20px;
+}
+
+.city-info {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.city-info h2 {
+    text-transform: uppercase;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.current-param-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.current-param {
+    padding: 10px;
+}
+.current-param__value {
+    font-weight: 700;
+}
+
+.charts-wrapper {
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+.charts-wrapper a {
+    color: #6f6f6fa3;
+}
+.charts-wrapper a:hover {
+    color: #5CA4A9;
+}
+
+.charts-content {
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+    .custom-navbar, .search {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .current-param-wrapper {
+        flex-direction: column;
+    }
+}
