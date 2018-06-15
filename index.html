@@ -2,9 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Weather Forecast</title>
+    <link href="dist/style.css" rel="stylesheet">
 </head>
 <body>
-$END$
+    <header class="header">
+        <div class="container">
+            <nav class="navbar custom-navbar">
+                <a class="navbar-brand">4CAST</a>
+                <form class="form-inline search">
+                    <div class="form-group ">
+                        <label for="cityInput">Enter city</label>
+                        <input type="text" class="form-control form-control-sm" id="cityInput" placeholder="London,uk">
+                    </div>
+                    <button type="submit" class="btn custom-btn btn-sm" id="citySubmit">Search</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="city-info container text-center">
+            <h3>
+                You are viewing the weather in
+            </h3>
+            <h2 id="cityName">
+                London
+            </h2>
+            <div class="current-param-wrapper">
+                <div class="current-param">
+                    <span class="current-param__title">temperature: </span>
+                    <span class="current-param__value" id="currentTemp">10 </span>
+                </div>
+                <div class="current-param">
+                    <span class="current-param__title">pressure: </span>
+                    <span class="current-param__value" id="currentPreasure">10 </span>
+                </div>
+                <div class="current-param">
+                    <span class="current-param__title">humidity: </span>
+                    <span class="current-param__value" id="currentHumidity">10 </span>
+                </div>
+                <div class="current-param">
+                    <span class="current-param__title">wind: </span>
+                    <span class="current-param__value" id="currentWind">10 </span>
+                </div>
+                <div class="current-param">
+                    <span class="current-param__title">cloudiness: </span>
+                    <span class="current-param__value" id="currentCloudiness">10 </span>
+                </div>
+            </div>
+        </section>
+        <section class="charts-wrapper container">
+            <ul class="nav nav-tabs justify-content-center" id="chartsTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="temp-tab" data-toggle="tab" href="#temp" role="tab" aria-controls="temp" aria-selected="false">
+                        Temperature
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pressure-tab" data-toggle="tab" href="#pressure" role="tab" aria-controls="pressure" aria-selected="false">
+                        Pressure
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="humidity-tab" data-toggle="tab" href="#humidity" role="tab" aria-controls="humidity" aria-selected="false">
+                        Humidity
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="speed-tab" data-toggle="tab" href="#speed" role="tab" aria-controls="speed" aria-selected="false">
+                        Wind speed
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="clouds-tab" data-toggle="tab" href="#clouds" role="tab" aria-controls="clouds" aria-selected="false">
+                        Cloudiness
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content charts-content" id="chartsTabsContent">
+                <div class="tab-pane fade show active" id="temp" role="tabpanel" aria-labelledby="temp-tab">
+                    Loading
+                </div>
+                <div class="tab-pane fade" id="pressure" role="tabpanel" aria-labelledby="pressure-tab">
+                    Loading
+                </div>
+                <div class="tab-pane fade" id="humidity" role="tabpanel" aria-labelledby="humidity-tab">
+                    Loading
+                </div>
+                <div class="tab-pane fade" id="speed" role="tabpanel" aria-labelledby="speed-tab">
+                    Loading
+                </div>
+                <div class="tab-pane fade" id="clouds" role="tabpanel" aria-labelledby="clouds-tab">
+                    Loading
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">City inputting error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Apparently there was a mistake entering the city.</p>
+                        <p>Try to enter the data in the format: City,code</p>
+                        <a href="http://kirste.userpage.fu-berlin.de/diverse/doc/ISO_3166.html">list of country codes (you should use A2 values) </a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn custom-btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="dist/main.js"></script>
 </body>
 </html>

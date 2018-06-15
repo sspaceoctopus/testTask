@@ -2,7 +2,8 @@ import moment from 'moment';
 import $ from 'jquery';
 import Highcharts from 'highcharts';
 
-let getOptions = function (chartName, list) {
+
+let getOptionsToHighCharts = function (chartName, list) {
     const Defaults = {
         temp: {
             chartType: 'spline',
@@ -138,18 +139,18 @@ let getOptions = function (chartName, list) {
                 symbol: 'square'
             },
             data: Defaults[chartName].yAxisArray
-        },]
-    }
+        }]
+    };
 };
 
 let renderCharts = function (list) {
-    const listOfCharts = ['temp', 'wind', 'clouds', 'humidity', 'pressure'];
-    listOfCharts.forEach(function (item) {
-        Highcharts.chart(getOptions(item, list));
-    })
+    const nameOfCharts = ['temp', 'wind', 'clouds', 'humidity', 'pressure'];
+    nameOfCharts.forEach(function (item) {
+        Highcharts.chart(getOptionsToHighCharts(item, list));
+    });
 };
 
-let showCurrent = function (list) {
+let showCurrentWeatherParams = function (list) {
     const CURRENT_PARAMS = [
         {
             id: '#cityName',
@@ -193,15 +194,6 @@ let showErrorMessage = function () {
     $('#modal').modal('show');
 };
 
-let initSearch = function () {
-    let btn = document.querySelector('#citySubmit');
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        let selectedCity = document.querySelector('#cityInput').value;
-        getData(selectedCity);
-    })
-};
-
 let getData = function (selectedCity = 'London,uk') {
     const APP_ID = '2e86897fa6a7f4dd056a29b3ccc7e8c4';
     const StatusCode = {
@@ -214,8 +206,8 @@ let getData = function (selectedCity = 'London,uk') {
 
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState == XhrState.done) {
-            if (this.status == StatusCode.ok) {
+        if (this.readyState === XhrState.done) {
+            if (this.status === StatusCode.ok) {
                 let result = JSON.parse(this.responseText);
                 let chartBase = {
                     'cityName': result.city.name,
@@ -239,10 +231,8 @@ let getData = function (selectedCity = 'London,uk') {
                     })
                 };
                 renderCharts(chartBase);
-                showCurrent(chartBase);
-                console.log(result);
-            }
-            else if (this.status == StatusCode.notFound) {
+                showCurrentWeatherParams(chartBase);
+            } else if (this.status === StatusCode.notFound) {
                 showErrorMessage();
             }
         }
@@ -251,4 +241,13 @@ let getData = function (selectedCity = 'London,uk') {
     xhttp.send();
 };
 
-export default { initSearch,getData };
+let initSearch = function () {
+    let btn = document.querySelector('#citySubmit');
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        let selectedCity = document.querySelector('#cityInput').value;
+        getData(selectedCity);
+    });
+};
+
+export default {initSearch, getData};

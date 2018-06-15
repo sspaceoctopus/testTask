@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
 body {
     font-family: 'Raleway', sans-serif;
 }
@@ -9,7 +11,6 @@ body {
 
 .custom-btn {
     background-color: #5CA4A9;
-    border-radius: 20px;
     color: white;
 }
 
